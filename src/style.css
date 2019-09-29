@@ -1,0 +1,75 @@
+/* common */
+body {
+    margin: 0;
+}
+.none {
+    display: none !important;
+}
+
+.mainpage {
+    display: flex;
+    margin: 0;
+}
+.mainleft {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 100vh;
+    background-color: #fff;
+}
+.mainlogo {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.mainlogo > h1 {
+    font-size: 10rem;
+    color: darkgreen;
+    margin: 0;
+}
+.mainlogo > h3 {
+    margin: 0;
+    font-size: 30px;
+}
+.mainlogo > p{
+    font-size: 17px;
+}
+.mainright {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 100vh;
+    background-color: darkgreen;
+}
+
+/* form */
+.form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 500px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 1px 2px 2px 1px #222;
+}
+.form p:hover {
+    color: green;
+    font-weight: bold;
+}
+.field {
+    font-size: 20px;
+    margin : 10px;
+    width: 400px;
+    height: 50px;
+    border: none;
+    text-indent: 20px;
+    background-color: whitesmoke;
+    border-radius: 7px;
+}
+.button {
+    background-color: darkgreen !important;
+    color: white !important;
+}
+.button:hover {
+    background-color: #173B0B !important;
+}
