@@ -36,7 +36,7 @@ export function login (values, callback) {
                 alert(response.data.message);
                 callback('/main');
             } else {
-                callback('/solvi');
+                callback('/main');
                 return response.data.token;
             }
         })
@@ -49,7 +49,8 @@ export function login (values, callback) {
     };
 }
 
-export function logout() {
+export function logout(callback) {
+    callback('/');
     return {
         type: LOGOUT,
         payload: 0

@@ -5,7 +5,26 @@ body {
 .none {
     display: none !important;
 }
+.subbutton {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin: 20px;
+    width: 170px;
+    height: 28px;
+    background-color: wheat;
+    color: darkgreen;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+.subbutton:hover {
+    background-color: green !important;
+    color: white !important;
+}
 
+/* main */
 .mainpage {
     display: flex;
     margin: 0;
@@ -69,7 +88,109 @@ body {
 .button {
     background-color: darkgreen !important;
     color: white !important;
+    cursor: pointer;
 }
 .button:hover {
     background-color: #173B0B !important;
+}
+
+/* solvi */
+.solvipage {
+    display: flex;
+    margin: 0;
+}
+.navigation {
+    display: flex;
+    flex-direction: column;
+    width: 210px;
+    height: 100vh;
+    background-color: darkgreen;
+}
+.navlogo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    width: 100%;
+}
+.navlogo > h1 {
+    margin: 0;
+    font-size: 3rem;
+    border-bottom: #fff solid 3px;
+}
+.userimage {
+    margin: 20px 20px 10px 20px;
+    width: 170px;
+    height: 170px;
+    background-color: #fff;
+}
+.userprofile > h4 {
+    margin : 0;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+}
+.userprofile > p {
+    margin: 0;
+    text-align: center;
+    color: white;
+
+}
+.logout {
+    position: fixed;
+    bottom: 0;
+}
+
+/* contents */
+.contents {
+    width: 100%;
+    height: 100vh;
+    background-color: whitesmoke;
+}
+
+/* selectcontentss */
+.selectcontents {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+.selectcontents > h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 30px 50px 30px 50px;
+    padding: 10px;
+    border-bottom: 2px solid black;
+}
+
+/* classList */
+.classList {
+    height: 100%;
+    padding: 0px 50px 0px 50px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.classbox {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 200px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px 1px wheat;
+    background-color: white;
+}
+.add {
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 0px 0px !important;
+    background-color: whitesmoke;
+    border: 7px dashed darkgreen;
+    cursor: pointer;
+}
+.add:hover {
+    background-color: wheat;
+    border: 7px solid wheat;
+}
+.add:active {
+    background-color: whitesmoke;
 }
