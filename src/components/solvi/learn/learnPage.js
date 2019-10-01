@@ -5,12 +5,14 @@ import _ from 'lodash';
 import { getTeam, getTeamUser } from '../../../actions/classFunction';
 import Team from './team';
 import TeamUser from './teamuser';
+import MakeTeam from './makeTeam';
 
 class LearnPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            clicked: 0
+            clicked: 0,
+            popup: false
         };
     }
     componentDidMount() {
@@ -37,6 +39,7 @@ class LearnPage extends Component {
     }
     renderTeamUser() {
         const datas = this.props.teamUser;
+        console.log(datas);
         return _.map(datas, data => {
             return <TeamUser
                 key={data.user}
@@ -44,27 +47,45 @@ class LearnPage extends Component {
             />
         });
     }
+    addTeam() {
+        this.setState({
+            ...this.state,
+            popup: !this.state.popup
+        })
+    }
     render() {
         const { classname } = this.props.page;
-        const { clicked } = this.state;
+        const { clicked, popup } = this.state;
         return(
             <div className="learnpage">
+                {popup 
+                    ? <MakeTeam addTeam={this.addTeam.bind(this)} /> 
+                    : null
+                }
                 <h1>{classname}</h1>
                 <div className="team">
                     <div className="teamList">
                         {this.renderTeam()}
-                        <div className="teamunit adt">
+                        <div onClick={this.addTeam.bind(this)} className="teamunit adt">
                             <h4>+</h4>
                         </div>
                     </div>
+                    {clicked ?
                     <div className="teamView">
-                        <div>
-                            {clicked ? this.renderTeamUser() : null}
+                        <div className="classmanage">
+
                         </div>
                         <div>
-                            
+                            <div className="usermanage">
+                                {clicked ? this.renderTeamUser() : null}
+                            </div>
+                            <div className="invite">
+                                
+                            </div>
                         </div>
                     </div>
+                    : null
+                    }
                 </div>
             </div>
         );

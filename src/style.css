@@ -374,5 +374,50 @@ body {
     color: white;
 }
 .teamView {
+    display: flex;
+    justify-content: center;
     width: 100%;
+    margin-top: 30px;
+}
+.usermanage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 260px;
+    height: 50vh;
+    background-color: white;
+    border-radius: 7px;
+    overflow-y: auto;
+}
+.classmanage {
+    width: 770px;
+    height: 60vh;
+    margin: 0px 10px 0px 5px;
+    background-color: snow;
+}
+.teamuser {
+    display: flex;
+    margin: 5px;
+    background-color: white;
+    width: 90%;
+    height: 60px;
+    border-top: 1px solid gainsboro;
+    border-bottom: 1px solid gainsboro;
+}
+.userinfo {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-content: center;
+    text-indent: 10px;
+}
+.usernick {
+    font-size: 1.7rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.useremail {
+    font-size: 1rem;
+}
+.yet {
+    color: red;
 }
