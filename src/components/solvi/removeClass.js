@@ -21,10 +21,17 @@ class RemoveClass extends Component {
         return(
             <div className="removeclass">
                 <div>
-                    <h2>{this.props.index.classname}</h2>
+                    <h2>수업을 삭제하시겠습니까?</h2>
+                    <h1>{this.props.index.classname}</h1>
                 </div>
-                <div onClick={this.onDelete.bind(this)} className="buttonA one">삭제</div>
-                <div onClick={this.props.onPopup} className="buttonA two">취소</div>
+                <div className="rebu">
+                    <div onClick={this.onDelete.bind(this)} className="field one">
+                        <h6>Remove</h6> 
+                    </div>
+                    <div onClick={this.props.onPopup} className="field two">
+                        <h6>Cancel</h6> 
+                    </div>
+                </div>
             </div> 
         );
     }

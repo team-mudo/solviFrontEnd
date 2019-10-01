@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import { logout } from '../../../actions/userFunction';
+import { resetinfo } from '../../../actions/classFunction';
 import ClassList from './classList';
 import image from '../../../img/default_img.png';
 
 class Navigation extends Component {
     onlogout() {
+        resetinfo();
         this.props.logout((path) => {
             this.props.history.push(`${path}`);
         });
@@ -44,4 +46,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default withRouter(connect(mapStateToProps, { logout })(Navigation));
+export default withRouter(connect(mapStateToProps, { logout, resetinfo })(Navigation));

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { changePage } from '../../actions/pageFunction';
 import SelectContents from './selectContents';
+import LearnPage from './learn/learnPage';
 
 class Contents extends Component {
     render() {
@@ -15,7 +16,7 @@ class Contents extends Component {
             <div className="contents">
                 {page === 0 
                     ? <SelectContents />
-                    : <div>{page}</div>
+                    : <LearnPage />
                 }
             </div>
         );

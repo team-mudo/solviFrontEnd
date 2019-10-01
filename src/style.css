@@ -171,7 +171,7 @@ body {
     flex-wrap: wrap;
     justify-content: space-around;
     align-content: flex-start;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 .classbox {
     display: flex;
@@ -212,7 +212,12 @@ body {
 }
 .classtitle > h2 {
     font-size: 2rem;
+    width: 100%;
+    height: 150px;
     margin: 0;
+}
+.classbox:hover {
+    box-shadow: 1px 1px 1px 1px gray;
 }
 .remove {
     display: flex;
@@ -254,40 +259,120 @@ body {
 
 /* removeClass */
 .removeclass {
+    display: flex;
+    flex-direction: column;
     position: absolute;
-    top: 1%;
-    right: 2%;
     border-radius: 10px;
-    width: 300px;
-    height: 125px;
-    background-color: darkgreen;
-    box-shadow: 2px 2px 2px 2px gray;
+    top: 20%;
+    left: 37%;
+    width: 500px;
+    height: 340px;
+    background-color: white;
+    box-shadow: 2px 2px 2px 2px red;
 }
 .removeclass h2 {
-    color: white;
+    color: black;
     text-align: center;
+    font-size: 2rem;
+    margin-top: 30px
 }
-.buttonA {
-    font-size: 1.5rem;
-    font-weight: bold;
-    display: inline-block;
-    width: 120px;
-    height: 34px;
-    margin: 0px 15px 0px 15px;
+.removeclass h1 {
+    color: black;
     text-align: center;
-    border-radius: 7px;
+    margin: 50px;
+    font-size: 3rem;
+}
+.rebu {
+    display: flex;
+    justify-content: center;
+}
+.rebu h6 {
+    margin: 0;
+    font-size: 1.7rem;
+    font-weight: bold;
+    text-indent: 0px !important;
 }
 .one {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: coral;
+    text-align: center;
     color: white;
+    width: 200px;
+    margin: 20px;
 }
 .one:hover {
     background-color: orangered;
 }
 .two {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: green;
+    text-align: center;
     color: white;
+    width: 200px;
+    margin: 20px;
 }
 .two:hover {
     background-color: wheat;
+}
+
+/* learnpage */
+.learnpage {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+.learnpage > h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 30px 50px 10px 50px;
+    padding: 10px;
+    border-bottom: 2px solid black;
+}
+.team {
+    padding: 0px 50px 0px 50px;
+    height: 100%;
+}
+.teamList {
+    display: flex;
+    flex-wrap: wrap;
+}
+.teamunit {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    background-color: wheat;
+    border-radius: 5px;
+    margin: 5px 5px 5px 5px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px 1px gray;
+}
+.teamunit:active {
+    box-shadow: 0px 0px 0px 0px;
+}
+.teamunit > h3 {
+    margin: 0px 15px 0px 15px;
+}
+.adt > h4 {
+    margin: 0px 3px 7px 3px;
+    font-size: 2rem;
+}
+.adt {
+    background-color: darkgreen;
+    color: white;
+}
+.adt:hover {
+    background-color: green;
+}
+.clicked {
+    background-color: green !important;
+    box-shadow: 0px 0px 0px 0px;
+    color: white;
+}
+.teamView {
+    width: 100%;
 }

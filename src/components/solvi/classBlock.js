@@ -18,7 +18,11 @@ class ClassBlock extends Component {
     }
     loadPage() {
         const { info } = this.props;
-        this.props.changePage({ page: info.cid });
+        this.props.changePage({
+            page: info.cid, 
+            classname: info.classname,
+            explain: info.explain
+        });
     }
     render() {
         const { info } = this.props;
