@@ -19,6 +19,7 @@ class TeamUser extends Component {
     }
     render() {
         const info = this.props.info;
+        const { auth } = this.props.user;
         return(
             <div className={info.status? "teamuser" : "teamuser yet"}>
                 <div className="userinfo">
@@ -29,9 +30,12 @@ class TeamUser extends Component {
                         {info.email}
                     </div>
                 </div>
-                <div className="deluser" onClick={this.outUser.bind(this)}>
-                    <div>내보내기</div>
-                </div>
+                {auth 
+                ?   <div className="deluser" onClick={this.outUser.bind(this)}>
+                        <div>내보내기</div>
+                    </div>
+                : null
+                }
             </div>
         );
     }

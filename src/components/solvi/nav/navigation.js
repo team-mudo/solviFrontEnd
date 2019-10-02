@@ -5,14 +5,17 @@ import { withRouter } from 'react-router-dom';
 import { changePage } from '../../../actions/pageFunction';
 import { logout } from '../../../actions/userFunction';
 import { resetinfo, resetinfo3 } from '../../../actions/classFunction';
+import { isTeam } from '../../../actions/teamFunction';
 import ClassList from './classList';
 import image from '../../../img/default_img.png';
 
 class Navigation extends Component {
     onlogout() {
+        const token = this.props.user.token;
         this.props.resetinfo();
         this.props.resetinfo3();
         this.props.changePage({page: 0});
+        this.props.isTeam(token,"leave");
         this.props.logout((path) => {
             this.props.history.push(`${path}`);
         });
@@ -50,4 +53,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default withRouter(connect(mapStateToProps, { logout, resetinfo, changePage, resetinfo3 })(Navigation));
+export default withRouter(connect(mapStateToProps, { logout, resetinfo, changePage, resetinfo3, isTeam })(Navigation));

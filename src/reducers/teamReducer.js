@@ -1,5 +1,5 @@
 import { GETMYTEAM } from '../actions/teamFunction';
-import { GETTEAM, RESETINFO, RESETINFO2 , MAKETEAM, DELTEAM } from '../actions/classFunction';
+import { GETTEAM, RESETINFO, MAKETEAM, DELTEAM } from '../actions/classFunction';
 
 export default function(state=[], action) {
     switch(action.type) {
@@ -9,11 +9,9 @@ export default function(state=[], action) {
             return action.payload;
         case RESETINFO:
             return action.payload;
-        case RESETINFO2:
-            return action.payload;
-        case MAKETEAM:
+        case MAKETEAM: // class
             return [...state, action.payload];
-        case DELTEAM:
+        case DELTEAM: // class
             return action.payload;
         default:
             return state;

@@ -16,6 +16,11 @@ class SelectContents extends Component {
             popup: false
         }
     }
+    componentDidMount() {
+        const token = this.props.user.token;
+        this.props.getMyClass(token);
+        this.props.getMyTeam(token);
+    }
     renderButton() {
         const { auth } = this.props.user;
         if(auth) {
@@ -27,10 +32,9 @@ class SelectContents extends Component {
         }
     }
     renderClass() {
-        const { auth, token } = this.props.user;
+        const { auth } = this.props.user;
         if(auth) {
             const datas = this.props.class;
-            this.props.getMyClass(token);
             if( datas.length === 0 ) {
                 return <div>진행중인 수업이 없습니다.</div>
             } else {
@@ -40,7 +44,6 @@ class SelectContents extends Component {
             }
         } else {
             const datas = this.props.team;
-            this.props.getMyTeam(token);
             if(datas.length === 0) {
                 return <div>진행중인 수업이 없습니다.</div>
             } else {
