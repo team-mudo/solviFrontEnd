@@ -7,6 +7,7 @@ export const GETTEAM = 'getteam';
 export const GETTEAMUSER = 'getteamuser';
 export const RESETINFO = 'resetinfo';
 export const RESETINFO2 = 'resetinfo2';
+export const MAKETEAM = 'maketeam';
 
 const ROOT_URL = 'http://192.168.139.132:8080/learn';
 
@@ -95,6 +96,21 @@ export function getTeamUser(token, tid) {
         });
     return {
         type: GETTEAMUSER,
+        payload: request
+    }
+}
+
+export function makeTeam(info) {
+    const request = axios
+        .post(`${ROOT_URL}/team/create`, info)
+        .then((response) => {
+            return response.data;
+        })
+        .catch((response) => {
+            console.log(response);
+        });
+    return {
+        type: MAKETEAM,
         payload: request
     }
 }

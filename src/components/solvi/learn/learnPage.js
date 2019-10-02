@@ -6,13 +6,15 @@ import { getTeam, getTeamUser } from '../../../actions/classFunction';
 import Team from './team';
 import TeamUser from './teamuser';
 import MakeTeam from './makeTeam';
+import RemoveTeam from './removeTeam';
 
 class LearnPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
             clicked: 0,
-            popup: false
+            addteam: false,
+            removeteam: false
         };
     }
     componentDidMount() {
@@ -50,18 +52,27 @@ class LearnPage extends Component {
     addTeam() {
         this.setState({
             ...this.state,
-            popup: !this.state.popup
+            addteam: !this.state.addteam
+        })
+    }
+    removeTeam() {
+        this.setState({
+            ...this.state,
+            removeteam: !this.state.removeteam
         })
     }
     render() {
         const { classname } = this.props.page;
-        const { clicked, popup } = this.state;
+        const { clicked, addteam, removeteam } = this.state;
         return(
             <div className="learnpage">
-                {popup 
-                    ? <MakeTeam addTeam={this.addTeam.bind(this)} /> 
-                    : null
-                }
+                { addteam ? <MakeTeam addTeam={this.addTeam.bind(this)} /> : null }
+                { removeteam ? 
+                    <RemoveTeam 
+                        index={this.state.clicked} 
+                        removeTeam={this.removeTeam.bind(this)}
+                        onChangeClicked={(next) => this.onChangeClicked(next)}
+                    /> : null }
                 <h1>{classname}</h1>
                 <div className="team">
                     <div className="teamList">
@@ -70,21 +81,31 @@ class LearnPage extends Component {
                             <h4>+</h4>
                         </div>
                     </div>
-                    {clicked ?
+                    {clicked === 0
+                    ? <div> { console.log(clicked) }</div> :
                     <div className="teamView">
-                        <div className="classmanage">
+                        <div className="View">
+                            <div className="classmanage">
 
-                        </div>
-                        <div>
-                            <div className="usermanage">
-                                {clicked ? this.renderTeamUser() : null}
                             </div>
-                            <div className="invite">
-                                
+                            <div className="userlist">
+                                <div className="usermanage">
+                                    {clicked ? this.renderTeamUser() : null}
+                                </div>
+                                <div className="invite">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div className="removeTeam">
+                            <div className="delTeam" onClick={this.removeTeam.bind(this)}>
+                                <p>REMOVE TEAM</p>
+                            </div>
+                            <div className="inviteTeam">
+                                <p>INVITE MEMBER</p>
                             </div>
                         </div>
                     </div>
-                    : null
                     }
                 </div>
             </div>
