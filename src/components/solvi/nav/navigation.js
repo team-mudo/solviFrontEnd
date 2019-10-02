@@ -2,14 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
+import { changePage } from '../../../actions/pageFunction';
 import { logout } from '../../../actions/userFunction';
-import { resetinfo } from '../../../actions/classFunction';
+import { resetinfo, resetinfo3 } from '../../../actions/classFunction';
 import ClassList from './classList';
 import image from '../../../img/default_img.png';
 
 class Navigation extends Component {
     onlogout() {
-        resetinfo();
+        this.props.resetinfo();
+        this.props.resetinfo3();
+        this.props.changePage({page: 0});
         this.props.logout((path) => {
             this.props.history.push(`${path}`);
         });
@@ -42,8 +45,9 @@ class Navigation extends Component {
 
 function mapStateToProps(state) {
     return {
-        user: state.user
+        user: state.user,
+        page: state.page
     }
 }
 
-export default withRouter(connect(mapStateToProps, { logout, resetinfo })(Navigation));
+export default withRouter(connect(mapStateToProps, { logout, resetinfo, changePage, resetinfo3 })(Navigation));

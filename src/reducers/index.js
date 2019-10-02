@@ -6,6 +6,7 @@ import PageReducer from './pageReducer';
 import ClassReducer from './classReducer';
 import TeamReducer from './teamReducer';
 import TeamUserReducer from './teamUserReducer';
+import TeamPageReducer from './teampageReducer';
 
 const rootReducer = combineReducers({
     form: formReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
     class: ClassReducer,
     team: TeamReducer,
     teamUser: TeamUserReducer,
+    teamPage: TeamPageReducer,
     page: PageReducer
 });
 

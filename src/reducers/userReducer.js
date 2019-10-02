@@ -1,4 +1,5 @@
 import { LOGIN, LOGOUT, USERINFO } from '../actions/userFunction';
+import { RESETINFO3 } from '../actions/classFunction';
 
 export default function(state={token: 0}, action) {
     switch(action.type) {
@@ -13,6 +14,8 @@ export default function(state={token: 0}, action) {
                 auth: action.payload.auth,
                 token: state.token
             };
+        case RESETINFO3:
+            return action.payload;
         default:
             return state;
     }

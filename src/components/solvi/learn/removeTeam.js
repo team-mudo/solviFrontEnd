@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { } from '../../../actions/classFunction';
+import { delTeam } from '../../../actions/classFunction';
+import { changeTeamPage } from '../../../actions/pageFunction';
 
 class RemoveTeam extends Component {
     onDelete() {
-        this.props.onChangeClicked(0);
+        const tid = this.props.index;
+        const { token } = this.props.user;
+        let data = this.props.team;
+
+        const idx = data.findIndex((item) => { return item.teamId === tid });
+        if(idx > -1) data.splice(idx, 1);
+    
+        this.props.delTeam(token, tid, data);
         this.props.removeTeam();
+        this.props.changeTeamPage({page: 0});
     }
     render() {
         return(
@@ -30,7 +39,8 @@ class RemoveTeam extends Component {
 function mapStateToProps(state) {
     return {
         user: state.user,
+        team: state.team
     }
 }
 
-export default connect(mapStateToProps,{  })(RemoveTeam);
+export default connect(mapStateToProps,{ delTeam, changeTeamPage })(RemoveTeam);

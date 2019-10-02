@@ -16,11 +16,6 @@ class SelectContents extends Component {
             popup: false
         }
     }
-    componentDidMount() {
-        const { token } = this.props.user;
-        this.props.getMyClass(token);
-        this.props.getMyTeam(token);
-    }
     renderButton() {
         const { auth } = this.props.user;
         if(auth) {
@@ -32,20 +27,27 @@ class SelectContents extends Component {
         }
     }
     renderClass() {
-        const { auth } = this.props.user;
+        const { auth, token } = this.props.user;
         if(auth) {
             const datas = this.props.class;
-            return _.map(datas, data => {
-                return <ClassBlock key={data.cid} info={data} />
-            });
+            this.props.getMyClass(token);
+            if( datas.length === 0 ) {
+                return <div>진행중인 수업이 없습니다.</div>
+            } else {
+                return _.map(datas, data => {
+                    return <ClassBlock key={data.cid} info={data} />
+                });
+            }
         } else {
             const datas = this.props.team;
+            this.props.getMyTeam(token);
             if(datas.length === 0) {
                 return <div>진행중인 수업이 없습니다.</div>
+            } else {
+                return _.map(datas, data => {
+                    return <TeamBlock key={data.team} info={data} />
+                });
             }
-            return _.map(datas, data => {
-                return <TeamBlock key={data.team} info={data} />
-            });
         }
     }
     onPopup() {

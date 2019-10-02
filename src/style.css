@@ -492,3 +492,40 @@ body {
 .re {
     height: 200px;
 }
+.description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+}
+.description > h2 {
+    font-size: 6rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: darkgreen;
+}
+.description > h4 {
+    font-size: 2rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.deluser {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+.deluser > div{
+    margin: 0;
+    font-size: 0.7rem;
+    cursor: pointer;
+    height: 20px;
+}
+.deluser > div:hover {
+    font-weight: bold;
+    color: orangered;
+}
+.notin {
+    background-color: green !important;
+}
+.notin:hover {
+    background-color: lightgreen !important;
+}

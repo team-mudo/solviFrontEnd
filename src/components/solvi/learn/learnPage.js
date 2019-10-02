@@ -3,18 +3,20 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 
 import { getTeam, getTeamUser } from '../../../actions/classFunction';
+import { changeTeamPage } from '../../../actions/pageFunction';
 import Team from './team';
 import TeamUser from './teamuser';
 import MakeTeam from './makeTeam';
 import RemoveTeam from './removeTeam';
+import AddUser from './addUser';
 
 class LearnPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            clicked: 0,
             addteam: false,
-            removeteam: false
+            removeteam: false,
+            adduser: false
         };
     }
     componentDidMount() {
@@ -22,57 +24,60 @@ class LearnPage extends Component {
         const { token } = this.props.user;
         this.props.getTeam(token, page);
     }
-    onChangeClicked(next) {
-        const { token } = this.props.user;
-        this.setState({...this.state, clicked: next });
-        this.props.getTeamUser(token, next);
-    }
     renderTeam() {
         const datas = this.props.team;
-        const { clicked } = this.state;
+        const { page } = this.props.teamPage;
         return _.map(datas, data => {
             return <Team
                 key={data.teamId} 
                 info={data}
-                click={clicked}
-                onChangeClicked={(next) => this.onChangeClicked(next)}
+                click={page}
             />
         });
     }
     renderTeamUser() {
         const datas = this.props.teamUser;
-        console.log(datas);
-        return _.map(datas, data => {
-            return <TeamUser
-                key={data.user}
-                info={data}
-            />
+        return _.map(datas, (data) => {
+            if(data.user === -1){
+                return null;
+            } else {
+                return <TeamUser
+                    key={data.user}
+                    info={data}
+                />
+            }
         });
     }
     addTeam() {
+        const { addteam } = this.state;
         this.setState({
             ...this.state,
-            addteam: !this.state.addteam
+            addteam: !addteam
         })
     }
     removeTeam() {
+        const { removeteam } = this.state;
         this.setState({
             ...this.state,
-            removeteam: !this.state.removeteam
-        })
+            removeteam: !removeteam,
+        });
+    }
+    addUser() {
+        const { adduser } = this.state;
+        this.setState({
+            ...this.state,
+            adduser: !adduser
+        });
     }
     render() {
         const { classname } = this.props.page;
-        const { clicked, addteam, removeteam } = this.state;
+        const { page } = this.props.teamPage;
+        const { addteam, removeteam, adduser } = this.state;
         return(
             <div className="learnpage">
                 { addteam ? <MakeTeam addTeam={this.addTeam.bind(this)} /> : null }
-                { removeteam ? 
-                    <RemoveTeam 
-                        index={this.state.clicked} 
-                        removeTeam={this.removeTeam.bind(this)}
-                        onChangeClicked={(next) => this.onChangeClicked(next)}
-                    /> : null }
+                { removeteam ? <RemoveTeam index={page} removeTeam={this.removeTeam.bind(this)} /> : null }
+                { adduser ? <AddUser addUser={this.addUser.bind(this)} /> : null }
                 <h1>{classname}</h1>
                 <div className="team">
                     <div className="teamList">
@@ -81,19 +86,19 @@ class LearnPage extends Component {
                             <h4>+</h4>
                         </div>
                     </div>
-                    {clicked === 0
-                    ? <div> { console.log(clicked) }</div> :
-                    <div className="teamView">
+                    {page === 0
+                    ? <div className="description"> 
+                        <h2>Design Thinking</h2>
+                        <h4>Make Team, Share your Idea!</h4>
+                    </div> 
+                    :<div className="teamView">
                         <div className="View">
                             <div className="classmanage">
 
                             </div>
                             <div className="userlist">
                                 <div className="usermanage">
-                                    {clicked ? this.renderTeamUser() : null}
-                                </div>
-                                <div className="invite">
-                                    
+                                    {page ? this.renderTeamUser() : null}
                                 </div>
                             </div>
                         </div>
@@ -101,8 +106,8 @@ class LearnPage extends Component {
                             <div className="delTeam" onClick={this.removeTeam.bind(this)}>
                                 <p>REMOVE TEAM</p>
                             </div>
-                            <div className="inviteTeam">
-                                <p>INVITE MEMBER</p>
+                            <div className="inviteTeam" onClick={this.addUser.bind(this)}>
+                                <p>ADD MEMBER</p>
                             </div>
                         </div>
                     </div>
@@ -118,8 +123,9 @@ function mapStateToProps(state) {
         user: state.user,
         page: state.page,
         team: state.team,
+        teamPage: state.teamPage,
         teamUser: state.teamUser
     }
 }
 
-export default connect(mapStateToProps, { getTeam, getTeamUser })(LearnPage);
+export default connect(mapStateToProps, { getTeam, getTeamUser, changeTeamPage })(LearnPage);
