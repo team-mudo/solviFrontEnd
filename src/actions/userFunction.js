@@ -3,9 +3,17 @@ import axios from 'axios';
 export const REGISTER = 'register';
 export const LOGIN = 'login';
 export const LOGOUT = 'logout';
-export const USERINFO = 'userinfo'
+export const USERINFO = 'userinfo';
+export const TOKENCHECK = 'tokencheck';
 
 const ROOT_URL = 'http://192.168.139.132:8080/user';
+
+export function tokenCheck(token) {
+    return {
+        type: TOKENCHECK,
+        payload: token
+    };
+}
 
 export function register(values, callback) {
     const request = axios

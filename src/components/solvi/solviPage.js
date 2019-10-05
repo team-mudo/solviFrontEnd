@@ -7,10 +7,17 @@ import Navigation from './nav/navigation';
 import Contents from './contents';
 
 class SolviPage extends Component {
+    constructor(props) {
+        super(props);
+        const { cookies } = this.props;
+        const { token } = this.props.user;
+        cookies.set('SOLVIAUTHTOKEN', token, { path: '/' });
+    }
+
     componentDidMount() {
         const token = this.props.user.token;
         this.props.userinfo(this.props.user.token);
-        this.props.isTeam(token,"register");
+        this.props.isTeam(token, "register");
     }
     render() {
         return(
